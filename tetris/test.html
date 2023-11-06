@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="../css/clock.css" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <title>My Homepage</title>
+  </head>
+  <body>
+    <div id="status">
+      <div class="circle-all status-all">
+        <a href="../index.html">
+          <div class="circle" id="circle-red"></div>
+        </a>
+
+        <div class="circle" id="circle-yellow"></div>
+        <div class="circle" id="circle-green"></div>
+      </div>
+      <div class="status-all" id="date"></div>
+      '
+      <div class="status-all" id="clock"></div>
+    </div>
+
+    <header>
+      <a href="#" class="logo">Homepage</a>
+      <ul class="nav">
+        <li>
+          <a href="#"><i class="fa-solid fa-house"></i></a>
+        </li>
+        <li><a href="#">Adults</a></li>
+        <li><a href="#">Kids</a></li>
+        <li><a href="#">Trend</a></li>
+        <li><a href="#">My List</a></li>
+      </ul>
+      <div class="search">
+        <input type="text" placeholder="Search" />
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </header>
+
+    <div class="banner">
+      <div class="carousel-box tetris-box">
+        <div class="grid">
+          <div class="left-column">
+            <h2>HIGH SCORES</h2>
+            <ol id="highScores"></ol>
+          </div>
+          <canvas id="board" class="game-board"></canvas>
+          <div class="right-column">
+            <div>
+              <h1>TETRIS</h1>
+              <p>Score: <span id="score">0</span></p>
+              <p>Lines: <span id="lines">0</span></p>
+              <p>Level: <span id="level">0</span></p>
+              <canvas id="next" class="next"></canvas>
+            </div>
+            <div id="sound-div">
+              <span class="sound-item" id="sound-speaker"></span>
+              <span class="sound-item" id="sound-description"></span>
+            </div>
+            <button id="play-btn" onclick="play()" class="play-button">
+              Play
+            </button>
+            <button id="pause-btn" onclick="pause()" class="play-button">
+              Pause
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="play" onclick="toggleVideo();"
+        ><i class="fa-solid fa-circle-play"></i>Watch Trailer</a
+      >
+      <ul class="sci">
+        <li>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="trailer">
+      <video
+        src="'국가 연구비 사기' 군산대 이장호 총장 압수수색    전주MBC 231102 방송.mp4"
+        muted
+        controls="true"
+        autoplay="true"
+      ></video>
+      <img
+        class="close"
+        src="./images/close.png"
+        alt=""
+        onclick="toggleVideo();"
+      />
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/80525a55e1.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".carousel").carousel();
+      });
+    </script>
+
+    <script src="../js/clock.js"></script>
+    <script type="text/javascript" src="constants.js"></script>
+    <script type="text/javascript" src="board.js"></script>
+    <script type="text/javascript" src="piece.js"></script>
+    <script type="text/javascript" src="sound.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>
