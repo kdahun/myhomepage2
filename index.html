@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/clock.css" />
     <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="./todolist/todolist-css.css" />
 
     <title>My Homepage</title>
   </head>
@@ -115,42 +116,29 @@
         </div>
       </div>
       <div class="content the-black-demon">
-        <img
-          src="./images/the-black-demon-title.png"
-          alt=""
-          class="movie-title"
-        />
-        <h4>
-          <span>2023</span><span><i>15+</i></span
-          ><span>2h 14min</span><span>Action</span>
-        </h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit at
-          natus officiis quas ducimus perferendis, incidunt tempore suscipit
-          reiciendis hic nesciunt quasi dignissimos rem odio? Libero
-          voluptatibus necessitatibus tempora recusandae?
-        </p>
-        <div class="button">
-          <a href="#"><i class="fa-solid fa-play"></i>Watch</a>
-          <a href="#"><i class="fa-solid fa-plus"></i>My List</a>
-        </div>
-      </div>
+        <div class="todo-title">To Do List</div>
+        <div class="todo-box">
+          <div class="todo-input-box">
+            <button class="complete-all-btn">✔</button>
+            <input
+              type="text"
+              class="todo-input"
+              placeholder="해야 할 일을 입력해주세요."
+            />
+          </div>
 
-      <div class="content the-tank">
-        <img src="./images/the-tank-title.png" alt="" class="movie-title" />
-        <h4>
-          <span>2023</span><span><i>15+</i></span
-          ><span>2h 14min</span><span>Action</span>
-        </h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit at
-          natus officiis quas ducimus perferendis, incidunt tempore suscipit
-          reiciendis hic nesciunt quasi dignissimos rem odio? Libero
-          voluptatibus necessitatibus tempora recusandae?
-        </p>
-        <div class="button">
-          <a href="#"><i class="fa-solid fa-play"></i>Watch</a>
-          <a href="#"><i class="fa-solid fa-plus"></i>My List</a>
+          <ul class="todo-list"></ul>
+          <div class="todo-bottom">
+            <div class="left-items">3 items left</div>
+            <div class="button-group">
+              <button class="show-all-btn selected" data-type="all">All</button>
+              <button class="show-active-btn" data-type="active">Active</button>
+              <button class="show-completed-btn" data-type="completed">
+                Completed
+              </button>
+            </div>
+            <button class="clear-completed-btn">Clear Completed</button>
+          </div>
         </div>
       </div>
 
@@ -176,15 +164,9 @@
           </div>
           <div
             class="carousel-item"
-            onclick="changeBg('bg-the-black-demon.jpeg','the-black-demon');"
+            onclick="changeBg('todolist-background5.jpg','the-black-demon');"
           >
-            <img src="./images/movies/the-black-demon.jpg" alt="" />
-          </div>
-          <div
-            class="carousel-item"
-            onclick="changeBg('bg-the-tank.jpeg','the-tank');"
-          >
-            <img src="./images/movies/the-tank.jpeg" alt="" />
+            <img src="./images/todolist-icon.png" alt="" />
           </div>
         </div>
       </div>
@@ -238,5 +220,7 @@
 
     <script src="js/clock.js"></script>
     <script src="js/weather.js"></script>
+    <script src="todolist/todolist-js.js"></script>
+    <script src="todolist/todo-delete.js"></script>
   </body>
 </html>
