@@ -1,237 +1,237 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
-    <meta charset="UTF-8" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/clock.css" />
-    <link rel="stylesheet" href="./css/home.css" />
+    <title>로컬 스토리지로 아이디 저장하기.</title>
 
-    <title>My Homepage</title>
+    <style>
+      body {
+        background-color: #29275a;
+        font-size: 16px;
+        line-height: 1.25;
+        letter-spacing: 1px;
+      }
+
+      * {
+        box-sizing: border-box;
+        transition: 0.25s all ease;
+      }
+
+      .login-container {
+        display: block;
+        position: relative;
+        z-index: 0;
+        margin: 4rem auto 0;
+        padding: 5rem 4rem 0 4rem;
+        width: 100%;
+        max-width: 525px;
+        min-height: 680px;
+      }
+
+      .form-login {
+        position: relative;
+        z-index: 1;
+        padding-bottom: 4.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      }
+
+      .login-nav {
+        position: relative;
+        padding: 0;
+        margin: 0 0 4em 1rem;
+      }
+
+      .login-nav__item {
+        list-style: none;
+        display: inline-block;
+      }
+
+      .login-nav__item + .login-nav__item {
+        margin-left: 2.25rem;
+      }
+
+      .login-nav__item a {
+        position: relative;
+        color: #ffffff;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 1.25rem;
+        padding-bottom: 0.5rem;
+        transition: 0.2s all ease;
+      }
+
+      .login__label {
+        display: block;
+        padding-left: 1rem;
+      }
+
+      .login__label,
+      .login__label--checkbox {
+        color: #ffffff;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .login__label--checkbox {
+        display: inline-block;
+        position: relative;
+        padding-left: 1.5rem;
+        margin-top: 2rem;
+        margin-left: 1rem;
+        color: #ffffff;
+        font-size: 0.75rem;
+      }
+
+      .login__input {
+        color: white;
+        font-size: 1.15rem;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        border: 2px solid transparent;
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.25);
+        letter-spacing: 1px;
+      }
+
+      .login__input:hover,
+      .login__input:focus {
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        background-color: transparent;
+      }
+
+      .login__input + .login__label {
+        margin-top: 1.5rem;
+      }
+
+      .login__input--checkbox {
+        position: absolute;
+        top: 0.1rem;
+        left: 0;
+        margin: 0;
+      }
+
+      .login__submit {
+        color: #ffffff;
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 1rem;
+        padding: 0.75rem;
+        display: block;
+        width: 100%;
+        background-color: rgba(17, 97, 237, 0.75);
+        border: none;
+        cursor: pointer;
+      }
+
+      .login__submit:hover {
+        background-color: rgba(17, 97, 237, 1);
+      }
+    </style>
   </head>
   <body>
-    <div id="status">
-      <div class="circle-all status-all">
-        <div class="circle" id="circle-red"></div>
-        <div class="circle" id="circle-yellow"></div>
-        <div class="circle" id="circle-green"></div>
-      </div>
-      <div class="status-all" id="date"></div>
-      '
-      <div class="status-all" id="clock"></div>
-    </div>
-
-    <header>
-      <a href="#" class="logo">Homepage</a>
-      <ul class="nav">
-        <li>
-          <a href="#"><i class="fa-solid fa-house"></i></a>
-        </li>
-        <li><a href="#">Adults</a></li>
-        <li><a href="#">Kids</a></li>
-        <li><a href="#">Trend</a></li>
-        <li><a href="#">My List</a></li>
-      </ul>
-      <div class="search">
-        <input type="text" placeholder="Search" />
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </div>
-    </header>
-
-    <main class="banner">
-      <div class="content active the-little-mermaid game-content">
-        <div class="box-center" id="box-home">
-          <div id="box-home-wether">null</div>
-
-          <div id="container">
-            <div class="image-with-text">
-              <a
-                href="https://eclass.kunsan.ac.kr/Main.do?cmd=viewHome&userDTO.localeKey=ko"
-                ><img src="image/다운로드.png" alt="Eclass"
-              /></a>
-              <span>Eclass</span>
-            </div>
-            <div class="image-with-text">
-              <a
-                href="https://eclass.kunsan.ac.kr/Main.do?cmd=viewHome&userDTO.localeKey=ko"
-                ><img src="image/naver.png" alt="Naver"
-              /></a>
-              <span>Naver</span>
-            </div>
-            <div class="image-with-text">
-              <a
-                href="https://eclass.kunsan.ac.kr/Main.do?cmd=viewHome&userDTO.localeKey=ko"
-                ><img src="image/github.png" alt="Github"
-              /></a>
-              <span>Github</span>
-            </div>
-            <div class="image-with-text">
-              <a
-                href="https://eclass.kunsan.ac.kr/Main.do?cmd=viewHome&userDTO.localeKey=ko"
-                ><img src="image/backjun.png" alt="BackJun"
-              /></a>
-              <span>BackJun</span>
-            </div>
-          </div>
-          <div id="container2">
-            <div class="image-with-text">
-              <a
-                href="https://eclass.kunsan.ac.kr/Main.do?cmd=viewHome&userDTO.localeKey=ko"
-                ><img src="image/nomadcoder.png" alt="nomadcoder"
-              /></a>
-              <span>nomade</span>
-            </div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        </div>
-      </div>
-      <div class="content bg-65 game-content">
-        <img
-          src="./images/tetris-title2.png"
-          alt=""
-          class="movie-title tetris-title-size"
-        />
-        <div class="button">
-          <a href="./tetris/test.html" style="font-size: 50px"
-            ><i class="fa-solid fa-play"></i>게임하기</a
-          >
-        </div>
-      </div>
-
-      <div class="content the-covenant gpt-content">
-        <div style="background-color: transparent">
-          <a
-            href="./chatgpt/test.html"
-            style="color: white"
-            id="chatgpt-button-size"
-            ><i class="fa-solid fa-play"></i>Try ChatGPT</a
-          >
-        </div>
-      </div>
-      <div class="content the-black-demon">
-        <img
-          src="./images/the-black-demon-title.png"
-          alt=""
-          class="movie-title"
-        />
-        <h4>
-          <span>2023</span><span><i>15+</i></span
-          ><span>2h 14min</span><span>Action</span>
-        </h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit at
-          natus officiis quas ducimus perferendis, incidunt tempore suscipit
-          reiciendis hic nesciunt quasi dignissimos rem odio? Libero
-          voluptatibus necessitatibus tempora recusandae?
-        </p>
-        <div class="button">
-          <a href="#"><i class="fa-solid fa-play"></i>Watch</a>
-          <a href="#"><i class="fa-solid fa-plus"></i>My List</a>
-        </div>
-      </div>
-
-      <div class="content the-tank">
-        <img src="./images/the-tank-title.png" alt="" class="movie-title" />
-        <h4>
-          <span>2023</span><span><i>15+</i></span
-          ><span>2h 14min</span><span>Action</span>
-        </h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit at
-          natus officiis quas ducimus perferendis, incidunt tempore suscipit
-          reiciendis hic nesciunt quasi dignissimos rem odio? Libero
-          voluptatibus necessitatibus tempora recusandae?
-        </p>
-        <div class="button">
-          <a href="#"><i class="fa-solid fa-play"></i>Watch</a>
-          <a href="#"><i class="fa-solid fa-plus"></i>My List</a>
-        </div>
-      </div>
-
-      <div class="carousel-box">
-        <div class="carousel">
-          <div
-            class="carousel-item"
-            onclick="changeBg('background1.avif','the-little-mermaid');"
-          >
-            <img src="./images/movies/background1.avif" alt="" />
-          </div>
-          <div
-            class="carousel-item"
-            onclick="changeBg('tetrisbackground.jpg','bg-65');"
-          >
-            <img src="./images/movies/capture.png" alt="" />
-          </div>
-          <div
-            class="carousel-item"
-            onclick="changeBg('chatgptbackground.png','the-covenant');"
-          >
-            <img src="./images/chatgptlogo2.jpg" alt="" />
-          </div>
-          <div
-            class="carousel-item"
-            onclick="changeBg('bg-the-black-demon.jpeg','the-black-demon');"
-          >
-            <img src="./images/movies/the-black-demon.jpg" alt="" />
-          </div>
-          <div
-            class="carousel-item"
-            onclick="changeBg('bg-the-tank.jpeg','the-tank');"
-          >
-            <img src="./images/movies/the-tank.jpeg" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <a href="#" class="play" onclick="toggleVideo();"
-        ><i class="fa-solid fa-circle-play"></i>Watch Trailer</a
+    <div class="login-container">
+      <form
+        class="form-login"
+        action="ok.html"
+        method="POST"
+        onsubmit="return login();"
       >
-      <ul class="sci">
-        <li>
-          <a href="#"><i class="fa-brands fa-facebook"></i></a>
-        </li>
-        <li>
-          <a href="#"><i class="fa-brands fa-youtube"></i></a>
-        </li>
-        <li>
-          <a href="#"><i class="fa-brands fa-twitter"></i></a>
-        </li>
-      </ul>
-    </div>
-    <div class="trailer">
-      <video src="1.수업소개.mp4" muted controls="true" autoplay="true"></video>
-      <img
-        class="close"
-        src="./images/close.png"
-        alt=""
-        onclick="toggleVideo();"
-      />
+        <ul class="login-nav">
+          <li class="login-nav__item active">
+            <a href="#" login-nav__item active>로그인</a>
+          </li>
+        </ul>
+        <label for="login-input-user" class="login__label">아이디</label>
+        <input id="login-input-user" class="login__input" type="text" />
+
+        <label for="login-input-password" class="login__label">비밀번호</label>
+        <input id="login-input-password" class="login__input" type="password" />
+
+        <label for="login-sign-up" class="login__label--checkbox">
+          <input
+            id="login-remember"
+            type="checkbox"
+            class="login__input--checkbox"
+          />
+          아이디 저장
+        </label>
+        <button class="login__submit" type="submit">로그인</button>
+      </form>
+      <!-- 회원가입 폼 -->
+      <form class="form-signup" action="signup_ok.html" method="POST">
+        <label for="signup-input-user" class="login__label"
+          >회원가입 아이디</label
+        >
+        <input id="signup-input-user" class="login__input" type="text" />
+
+        <label for="signup-input-password" class="login__label"
+          >회원가입 비밀번호</label
+        >
+        <input
+          id="signup-input-password"
+          class="login__input"
+          type="password"
+        />
+
+        <button class="login__submit" type="submit">회원가입</button>
+      </form>
     </div>
 
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.js"
-      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-      crossorigin="anonymous"
-    ></script>
-    <script src="./js/script.js"></script>
-    <script
-      src="https://kit.fontawesome.com/80525a55e1.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
-      $(document).ready(function () {
-        $(".carousel").carousel();
-      });
-    </script>
+      // 회원가입 폼 제출 시 아이디와 비밀번호를 로컬 스토리지에 저장하는 함수
+      document
+        .querySelector(".form-signup")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const signupUserId =
+            document.getElementById("signup-input-user").value;
+          const signupPassword = document.getElementById(
+            "signup-input-password"
+          ).value;
+          // 회원가입 정보를 로컬 스토리지에 저장
+          localStorage.setItem("signupUserId", signupUserId);
+          localStorage.setItem("signupPassword", signupPassword);
+          alert("회원가입이 완료되었습니다.");
+        });
 
-    <script src="js/clock.js"></script>
-    <script src="js/weather.js"></script>
+      // 로그인 함수
+      function login() {
+        const idInput = document.getElementById("login-input-user");
+        const pwdInput = document.getElementById("login-input-password");
+
+        // localStorage에서 회원가입 정보 가져오기
+        const savedUserId = localStorage.getItem("signupUserId");
+        const savedPassword = localStorage.getItem("signupPassword");
+
+        // localStorage의 정보와 입력된 정보 비교하여 로그인 처리
+        if (idInput.value === savedUserId && pwdInput.value === savedPassword) {
+          // 정보 일치하여 로그인 성공
+          alert("로그인 성공!");
+          // 로그인 성공 시 페이지 이동
+          window.location.href = "index.html"; // index.html로 이동
+          return false; // 폼 제출 막기
+        } else {
+          // 정보 불일치로 로그인 실패
+          alert("아이디 또는 비밀번호를 올바르게 입력해주세요.");
+          return false; // 폼 제출 막기
+        }
+      }
+
+      // 페이지 로딩 시 로컬 스토리지에서 회원가입 정보를 가져와 아이디 필드에 채워주는 함수
+      window.onload = function () {
+        const savedUserId = localStorage.getItem("signupUserId");
+        const savedPassword = localStorage.getItem("signupPassword");
+        if (savedUserId && savedPassword) {
+          document.getElementById("login-input-user").value = savedUserId;
+          document.getElementById("login-input-password").value = savedPassword;
+        }
+      };
+    </script>
   </body>
 </html>
